@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EMI Calculator</title>
+
+  <style>
+    /* Reset some default styles */
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Main container */
+    .container {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      width: 320px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    /* Input groups */
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    label {
+      font-size: 14px;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    /* Buttons */
+    button {
+      width: 48%;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+
+    .calculate {
+      background: #007bff;
+      color: white;
+    }
+
+    .reset {
+      background: #ccc;
+    }
+
+    /* Result */
+    .result {
+      margin-top: 15px;
+      font-weight: bold;
+      text-align: center;
+      color: green;
+    }
+  </style>
+</head>
+
+<body>
+ 
+
+  <div class="container">
+    <h2>EMI Calculator</h2>
+
+    <!-- Loan Amount -->
+    <div class="form-group">
+      <label>Loan Amount ($)</label>
+      <input type="number" id="loan" placeholder="e.g 30000">
+    </div>
+
+    <!-- Time -->
+    <div class="form-group">
+      <label>Period (Months)</label>
+      <input type="number" id="months" placeholder="e.g 12">
+    </div>
+
+    <!-- Interest -->
+    <div class="form-group">
+      <label>Interest Rate (%)</label>
+      <input type="number" id="rate" placeholder="e.g 7">
+    </div>
+
+    <!-- Buttons -->
+    <div class="btn-group">
+      <button class="calculate" onclick="calculateEMI()">Calculate</button>
+      <button class="reset" onclick="resetForm()">Reset</button>
+    </div>
+
+    <!-- Result -->
+    <div class="result" id="result"></div>
+  </div>
+
+ <script>
+  function calculateEMI(){
+ let loan=document.getElementById ("loan").value;
+ let month=document.getElementById ("month").value;
+ let rate =document.getElementById ("rate").value;
+
+  loan = parseFloat(loan);
+  month = parseFloat(month);
+  rate = parseFloat(rate);
+
+  console.log(loan)
+  console.log(month)
+  console.log(rate)
+
+  let InterestAmount=(loan * rate)/100;
+  let installment = (loan * interestAmount)/month;
+  if(isNAN(installment)){
+    document.getElementById("result").innerText("invalid entries")
+  }else{
+    document.getElementById("result").innerText(installment);
+  }
+}
+ </script>
+
+</body>
+</html>
